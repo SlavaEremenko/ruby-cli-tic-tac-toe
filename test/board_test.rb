@@ -35,28 +35,24 @@ class BoardTest < Minitest::Test
       [:o, :x, nil]
     ]
     refute @board.victory?, "Should not return victory if victory conditions are not met"
-
     @board.board = [
       [:x, :o, :x],
       [:x, :o, :x],
       [:o, :x, :x]
     ]
     assert_equal :x, @board.victory?, "Should return victory for X if there are three X in line vertically"
-
     @board.board = [
       [:x, :o, :x],
       [:x, :x, :o],
       [:o, :o, :o]
     ]
     assert_equal :o, @board.victory?, "Should return victory for O if there are three O in line horizontally"
-
     @board.board = [
       [:x, :o, :x],
       [:x, :x, :o],
       [:o, :o, :x]
     ]
     assert_equal :x, @board.victory?, "Should return victory for X if there are three X in line diagonally from top left to bottom right"
-
     @board.board = [
       [:x, :o, :o],
       [:x, :o, :o],
@@ -74,8 +70,8 @@ class BoardTest < Minitest::Test
   def test_board_rendering
     @board.board = [
       [:x, :o, :x],
-      [:x, :x, :o],
-      [:o, :o, :x]
+      [:x, nil, :o],
+      [nil, :o, :x]
     ]
 
     out, err = capture_io do
@@ -84,8 +80,8 @@ class BoardTest < Minitest::Test
 
     assert_equal %Q( x | o | x 
 -----------
- x | o | x 
+ x |   | o 
 -----------
- x | o | x ), out.chomp, "Should render board state correctly"
+   | o | x ), out.chomp, "Should render board state correctly"
   end
 end
