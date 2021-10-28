@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require 'board.rb'
+require "board.rb"
 
 class BoardTest < Minitest::Test
   def setup
