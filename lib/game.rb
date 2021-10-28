@@ -4,7 +4,7 @@ class Game
 		@board = Board.new
 
 		player_1_symbol = ask_first_players_symbol
-		player_2_symbol = player_1_symbol == :X ? :O : :X
+		player_2_symbol = player_1_symbol == :x ? :o : :x
 		
 		@players = [
 			Player.new(player_1_symbol, @board),

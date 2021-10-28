@@ -1,4 +1,6 @@
 class Board
+	attr_accessor :board
+	
 	# Initializes a nil-filled 3x3 matrix representing board state
 	def initialize
 		@board = Array.new(3) { Array.new(3) }
