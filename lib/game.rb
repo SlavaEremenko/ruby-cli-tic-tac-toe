@@ -38,18 +38,8 @@ class Game
 			# Render the board
 			@board.render
 
-			# Check draw condition
-			if @board.draw?
-				puts "Draw! Thanks you for playing..."
-				exit
-			end
-
-			# Check draw condition
-			player_victory = @board.victory?
-			if player_victory
-				puts "Player with #{player_victory.upcase} won! Thanks you for playing..."
-				exit
-			end
+			# End game if game ending conditions are met
+			end_game_if_draw_or_victory
 
 			# Prompt current_player for their move
 			x, y = @current_player.prompt_move
@@ -59,6 +49,21 @@ class Game
 
 			# Switch players
 			@current_player = @players[@current_player == @players[0] ? 1 : 0]
+		end
+	end
+
+	def end_game_if_draw_or_victory
+		# Check draw condition
+		if @board.draw?
+			puts "Draw! Thanks you for playing..."
+			exit
+		end
+
+		# Check draw condition
+		player_victory = @board.victory?
+		if player_victory
+			puts "Player with #{player_victory.upcase} won! Thanks you for playing..."
+			exit
 		end
 	end
 end

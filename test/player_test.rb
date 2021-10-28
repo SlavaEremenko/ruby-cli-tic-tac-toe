@@ -51,19 +51,19 @@ class PlayerTest < Minitest::Test
     $stdin.puts "asd\n1,1" # Try invalid input
     $stdin.rewind
     out, = capture_io { @player.prompt_move }
-    assert_equal "X - Make your move: Sorry, your move format is invalid. (should be: x,y) X - Make your move: ", out, "Should display an invalid move error message"
+    assert_equal "X - Make your move: Sorry, your move format is invalid. (should be: x,y)\nX - Make your move: ", out, "Should display an invalid move error message"
 
     $stdin = StringIO.new
     $stdin.puts "1,9\n1,1" # Try out of bounds input
     $stdin.rewind
     out, = capture_io { @player.prompt_move }
-    assert_equal "X - Make your move: Sorry, your coordinates are out of bounds. X - Make your move: ", out, "Should display an out of bounds error message"
+    assert_equal "X - Make your move: Sorry, your coordinates are out of bounds.\nX - Make your move: ", out, "Should display an out of bounds error message"
 
     $stdin = StringIO.new
     $stdin.puts "0,0\n1,1" # Try a spot that's already taken
     $stdin.rewind
     out, = capture_io { @player.prompt_move }
-    assert_equal "X - Make your move: Sorry, this spot is already taken. X - Make your move: ", out, "Should display a spot taken error message"
+    assert_equal "X - Make your move: Sorry, this spot is already taken.\nX - Make your move: ", out, "Should display a spot taken error message"
 
     $stdin = StringIO.new
     $stdin.puts "1,1"

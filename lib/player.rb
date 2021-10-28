@@ -32,7 +32,7 @@ class Player
 			
 			# Validate move format
 			unless valid_move_format?(input)
-				msg = "Sorry, your move format is invalid. (should be: x,y) "
+				msg = "Sorry, your move format is invalid. (should be: x,y)\n"
 				next
 			end
 
@@ -40,13 +40,13 @@ class Player
 
 			# Validate coordinates
 			unless @board.valid_board_coordinates?(x, y)
-				msg = "Sorry, your coordinates are out of bounds. "
+				msg = "Sorry, your coordinates are out of bounds.\n"
 				next
 			end
 
 			# Validate spot availability
 			unless @board.spot_available?(x, y)
-				msg = "Sorry, this spot is already taken. "
+				msg = "Sorry, this spot is already taken.\n"
 				next
 			end
 
