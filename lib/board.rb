@@ -37,7 +37,7 @@ class Board
 
 	# Check if a set of coordinates is valid for this board
 	def valid_board_coordinates?(x, y)
-		x > 0 && y > 0 && x < 3 && y < 3
+		x >= 0 && y >= 0 && x < 3 && y < 3
 	end
 
 	# Check if a spot on the board is already taken

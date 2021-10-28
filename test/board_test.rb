@@ -82,7 +82,7 @@ class BoardTest < Minitest::Test
   def test_board_coordinates_validation
     refute @board.valid_board_coordinates?(-1, 2), "Should return false for a negative coordinate"
     refute @board.valid_board_coordinates?(3, 2), "Should return false for out of bound coordinate"
-    assert @board.valid_board_coordinates?(1, 1), "Should return true for valid coordinates"
+    assert @board.valid_board_coordinates?(1, 0), "Should return true for valid coordinates"
   end
 
   def test_board_rendering

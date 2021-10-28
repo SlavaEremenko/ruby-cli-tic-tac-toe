@@ -1,5 +1,5 @@
 require "minitest/autorun"
-require 'stringio'
+require "stringio"
 require "game.rb"
 
 class GameTest < Minitest::Test
