@@ -9,8 +9,8 @@ class Game
 		player_2_symbol = player_1_symbol == :x ? :o : :x
 		
 		@players = [
-			Player.new(player_1_symbol, @board),
-			Player.new(player_2_symbol, @board)
+			Player.new(player_1_symbol, self),
+			Player.new(player_2_symbol, self)
 		]
 	end
 

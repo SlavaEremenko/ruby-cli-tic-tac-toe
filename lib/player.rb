@@ -16,5 +16,6 @@ class Player
 
 	# Validates whether textual move input is in a valid format (format: "x,y")
 	def valid_move_format?(input)
+		input =~ /^\d,\d$/
 	end
 end
