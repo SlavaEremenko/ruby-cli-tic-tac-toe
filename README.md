@@ -1,5 +1,16 @@
-# ruby-cli-tic-tac-toe
+# Ruby CLI Tic Tac Toe game
 Sample command line TicTacToe application for TankFarm.io
+
+# Running the game
+```
+ruby tictactoe.rb
+```
+
+# Running tests
+```
+bundle install
+rake test
+```
 
 # Rough pseudocode logic
 ```
