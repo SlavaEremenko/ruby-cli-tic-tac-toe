@@ -21,20 +21,8 @@ class Board
 	# Checks victory conditions
 	# Returns winning player's symbol, or false if nobody won
 	def victory?
-		# Array containing all Nx1 lines in the board
-		lines = []
-
-		# Add rows
-		lines.push(*@board)
-
-		# Add columns
-		lines.push(*@board[0].map.with_index { |x, i| @board.map { |row| row[i] } })
-
-		# Add diagonals
-		lines << [@board[0][0], @board[1][1], @board[2][2]]
-		lines << [@board[0][2], @board[1][1], @board[2][0]]
-
-		lines.each do |line|
+		# Loop over all Nx1 lines in the board
+		[*@board, *columns, *diagonals].each do |line|
 			return :x if line.all?(:x)
 			return :o if line.all?(:o)
 		end
@@ -55,5 +43,18 @@ class Board
 	# Place a symbol on the board
 	def place_symbol(x, y, symbol)
 		@board[x][y] = symbol
+	end
+
+	# Returns an array of columns of the board
+	def columns
+		@board.transpose
+	end
+
+	# Returns an array with two diagonals of the board
+	def diagonals
+		[
+			[@board[0][0], @board[1][1], @board[2][2]],
+			[@board[0][2], @board[1][1], @board[2][0]]
+		]
 	end
 end

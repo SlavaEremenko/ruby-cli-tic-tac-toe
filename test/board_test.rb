@@ -13,6 +13,24 @@ class BoardTest < Minitest::Test
     assert_equal :o, @board.board[1][2], "Should place X"
   end
 
+  def test_columns
+    @board.board = [
+      [:x, :o, :x],
+      [:x, :o, :x],
+      [:o, :x, nil]
+    ]
+    assert_equal [[:x, :x, :o], [:o, :o, :x], [:x, :x, nil]], @board.columns, "Should return all columns"
+  end
+
+  def test_diagonals
+    @board.board = [
+      [:x, :o, :x],
+      [:x, :o, :x],
+      [:o, :x, nil]
+    ]
+    assert_equal [[:x, :o, nil], [:x, :o, :o]], @board.diagonals, "Should return two diagonals"
+  end
+
   def test_draw_condition
     refute @board.draw?, "Should not be draw by default"
     # 8 spots filled in (no victory)
@@ -74,7 +92,7 @@ class BoardTest < Minitest::Test
       [nil, :o, :x]
     ]
 
-    out, err = capture_io do
+    out, = capture_io do
       @board.render
     end
 
@@ -82,6 +100,6 @@ class BoardTest < Minitest::Test
 -----------
  x |   | o 
 -----------
-   | o | x ), out.chomp, "Should render board state correctly"
+   | o | x ), out, "Should render board state correctly"
   end
 end
