@@ -12,7 +12,7 @@ Start main game loop
 	if win/draw conditions are met:
 		display result of the game
 		exit
-	prompt current player for their move in a loop until a valid move is entered
+	loop until a valid move is entered
 		prompt current player for their move with a message "#{error}Player #{@current_player.mark.to_s.upcase}, please enter your move: "
 		check if input == "s"
 			erase error message and skip iteration
@@ -40,8 +40,8 @@ Board class will:
 	render current game state
 	check winning conditions
 	check draw condition
-	check if coordinates are valid
-	mark a spot
+	check if a set of coordinates is valid for this board (allowing for future extension of the board to NxM size)
+	place a symbol
 
 Player class will:
 	store player's symbol
