@@ -16,6 +16,7 @@ class Board
 			end
 			print "\n-----------\n" unless y == @board.size - 1
 		end
+		print "\n"
 	end
 
 	# Checks victory conditions

@@ -1,5 +1,5 @@
 class Game
-	attr_accessor :players
+	attr_accessor :players, :current_player
 
 	# Initializes board and players
 	def initialize
@@ -9,9 +9,11 @@ class Game
 		player_2_symbol = player_1_symbol == :x ? :o : :x
 		
 		@players = [
-			Player.new(player_1_symbol, self),
-			Player.new(player_2_symbol, self)
+			Player.new(player_1_symbol, @board),
+			Player.new(player_2_symbol, @board)
 		]
+
+		@current_player = @players[0]
 	end
 
 	# Asks for and returns first player's preferred symbol (X or O)
@@ -30,7 +32,33 @@ class Game
 		end
 	end
 
-	# Starts main game loop
+	# Runs the main game loop
 	def play
+		loop do
+			# Render the board
+			@board.render
+
+			# Check draw condition
+			if @board.draw?
+				puts "Draw! Thanks you for playing..."
+				exit
+			end
+
+			# Check draw condition
+			player_victory = @board.victory?
+			if player_victory
+				puts "Player with #{player_victory.upcase} won! Thanks you for playing..."
+				exit
+			end
+
+			# Prompt current_player for their move
+			x, y = @current_player.prompt_move
+
+			# Place a symbol on board
+			@board.place_symbol(x, y, @current_player.symbol)
+
+			# Switch players
+			@current_player = @players[@current_player == @players[0] ? 1 : 0]
+		end
 	end
 end

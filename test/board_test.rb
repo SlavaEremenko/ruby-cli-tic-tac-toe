@@ -100,7 +100,7 @@ class BoardTest < Minitest::Test
 -----------
  x |   | o 
 -----------
-   | o | x ), out, "Should render board state correctly"
+   | o | x \n), out, "Should render board state correctly"
   end
 
   def test_spot_availability
