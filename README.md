@@ -41,6 +41,7 @@ Board class will:
 	check winning conditions
 	check draw condition
 	check if a set of coordinates is valid for this board (allowing for future extension of the board to NxN size)
+	check if the spot is not already taken
 	place a symbol
 
 Player class will:

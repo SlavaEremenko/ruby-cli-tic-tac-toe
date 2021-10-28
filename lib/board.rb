@@ -40,9 +40,14 @@ class Board
 		x > 0 && y > 0 && x < 3 && y < 3
 	end
 
+	# Check if a spot on the board is already taken
+	def spot_available?(x, y)
+		@board[y][x].nil?
+	end
+
 	# Place a symbol on the board
 	def place_symbol(x, y, symbol)
-		@board[x][y] = symbol
+		@board[y][x] = symbol
 	end
 
 	# Returns an array of columns of the board

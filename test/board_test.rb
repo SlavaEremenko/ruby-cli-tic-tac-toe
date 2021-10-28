@@ -9,8 +9,8 @@ class BoardTest < Minitest::Test
   def test_places_a_symbol
     @board.place_symbol(2,1, :x)
     @board.place_symbol(1,2, :o)
-    assert_equal :x, @board.board[2][1], "Should place O"
-    assert_equal :o, @board.board[1][2], "Should place X"
+    assert_equal :x, @board.board[1][2], "Should place O"
+    assert_equal :o, @board.board[2][1], "Should place X"
   end
 
   def test_columns
@@ -101,5 +101,15 @@ class BoardTest < Minitest::Test
  x |   | o 
 -----------
    | o | x ), out, "Should render board state correctly"
+  end
+
+  def test_spot_availability
+    @board.board = [
+      [:x, :o, :x],
+      [:x, nil, :o],
+      [nil, :o, :x]
+    ]
+    refute @board.spot_available?(2, 0), "Should return false for unavailable spot"
+    assert @board.spot_available?(1, 1), "Should return true for an empty spot"
   end
 end
